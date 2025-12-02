@@ -1,10 +1,11 @@
-const CACHE_NAME = 'ava-erp-v1';
+const CACHE_NAME = 'ava-erp-v4';
 const urlsToCache = [
   '/',
   '/index.html',
   '/app.js',
   '/styles.css',
   '/manifest.json',
+  '/version.json',
   '/images/icon.svg',
   '/images/Ava transparent.png',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'

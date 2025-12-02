@@ -1203,7 +1203,8 @@ function loadPOS() {
     // Checkout
     document.getElementById('posCheckoutBtn').onclick = completePOSSale;
 
-    // Update tax rate display
+    // Update rate displays
+    document.getElementById('posMarkupRate').textContent = appData.settings?.markupRate ?? 30;
     document.getElementById('posTaxRate').textContent = appData.settings?.taxRate ?? 12;
 }
 
@@ -1329,11 +1330,16 @@ function removeFromCart(index) {
 
 function updatePOSTotals() {
     const subtotal = posCart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const markupRate = appData.settings?.markupRate ?? 30;
     const taxRate = appData.settings?.taxRate ?? 12;
-    const tax = subtotal * (taxRate / 100);
-    const total = subtotal + tax;
+    const markup = subtotal * (markupRate / 100);
+    const sellingPrice = subtotal + markup;
+    const tax = sellingPrice * (taxRate / 100);
+    const total = sellingPrice + tax;
 
     document.getElementById('posSubtotal').textContent = formatCurrency(subtotal);
+    document.getElementById('posMarkupRate').textContent = markupRate;
+    document.getElementById('posMarkup').textContent = formatCurrency(markup);
     document.getElementById('posTax').textContent = formatCurrency(tax);
     document.getElementById('posTotal').textContent = formatCurrency(total);
     document.getElementById('posCheckoutBtn').disabled = posCart.length === 0;
@@ -1358,8 +1364,8 @@ function showCheckoutModal() {
     const markupRate = appData.settings?.markupRate ?? 30;
     const taxRate = appData.settings?.taxRate ?? 12;
 
-    document.getElementById('checkoutMarkup').value = markupRate;
-    document.getElementById('checkoutTaxRate').value = taxRate;
+    document.getElementById('checkoutMarkup').textContent = markupRate;
+    document.getElementById('checkoutTaxRate').textContent = taxRate;
     document.getElementById('checkoutDiscount').value = 0;
 
     // Populate customer dropdown
@@ -1371,10 +1377,18 @@ function showCheckoutModal() {
     // Calculate and display totals
     updateCheckoutTotals();
 
-    // Add event listeners for real-time calculation
-    document.getElementById('checkoutMarkup').oninput = updateCheckoutTotals;
-    document.getElementById('checkoutTaxRate').oninput = updateCheckoutTotals;
+    // Add event listener for real-time calculation (discount only)
     document.getElementById('checkoutDiscount').oninput = updateCheckoutTotals;
+
+    // Reset payment method to Cash and show cash section
+    const paymentSelect = document.getElementById('checkoutPaymentMethod');
+    paymentSelect.value = 'Cash';
+    document.getElementById('checkoutCashAmount').value = '';
+    updateCashSection();
+
+    // Add event listeners for payment method and cash amount
+    paymentSelect.onchange = updateCashSection;
+    document.getElementById('checkoutCashAmount').oninput = updateCashChange;
 
     // Show modal
     modal.classList.add('active');
@@ -1383,10 +1397,44 @@ function showCheckoutModal() {
     document.getElementById('confirmCheckoutBtn').onclick = confirmCheckout;
 }
 
+function updateCashSection() {
+    const paymentMethod = document.getElementById('checkoutPaymentMethod').value;
+    const cashSection = document.getElementById('checkoutCashSection');
+
+    if (paymentMethod === 'Cash') {
+        cashSection.style.display = 'block';
+        updateCashChange();
+    } else {
+        cashSection.style.display = 'none';
+    }
+}
+
+function updateCashChange() {
+    const cashAmount = parseFloat(document.getElementById('checkoutCashAmount').value) || 0;
+    const grandTotalText = document.getElementById('checkoutGrandTotal').textContent;
+    // Parse the grand total (remove currency symbol and parse)
+    const grandTotal = parseFloat(grandTotalText.replace(/[^\d.-]/g, '')) || 0;
+
+    const change = cashAmount - grandTotal;
+    const changeDisplay = document.getElementById('checkoutChangeDisplay');
+    const changeAmount = document.getElementById('checkoutChangeAmount');
+
+    if (cashAmount === 0) {
+        changeAmount.textContent = formatCurrency(0);
+        changeDisplay.classList.remove('insufficient');
+    } else if (change < 0) {
+        changeAmount.textContent = 'Insufficient';
+        changeDisplay.classList.add('insufficient');
+    } else {
+        changeAmount.textContent = formatCurrency(change);
+        changeDisplay.classList.remove('insufficient');
+    }
+}
+
 function updateCheckoutTotals() {
     const subtotal = posCart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const markupRate = parseFloat(document.getElementById('checkoutMarkup').value) || 0;
-    const taxRate = parseFloat(document.getElementById('checkoutTaxRate').value) || 0;
+    const markupRate = appData.settings?.markupRate ?? 30;
+    const taxRate = appData.settings?.taxRate ?? 12;
     const discount = parseFloat(document.getElementById('checkoutDiscount').value) || 0;
 
     const markupAmount = subtotal * (markupRate / 100);
@@ -1400,6 +1448,9 @@ function updateCheckoutTotals() {
     document.getElementById('checkoutTaxAmount').textContent = '+' + formatCurrency(taxAmount);
     document.getElementById('checkoutDiscountDisplay').textContent = '-' + formatCurrency(discount);
     document.getElementById('checkoutGrandTotal').textContent = formatCurrency(grandTotal);
+
+    // Update cash change calculation when totals change
+    updateCashChange();
 }
 
 function confirmCheckout() {
@@ -1409,8 +1460,8 @@ function confirmCheckout() {
     const notes = document.getElementById('checkoutNotes').value;
 
     const subtotal = posCart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const markupRate = parseFloat(document.getElementById('checkoutMarkup').value) || 0;
-    const taxRate = parseFloat(document.getElementById('checkoutTaxRate').value) || 0;
+    const markupRate = appData.settings?.markupRate ?? 30;
+    const taxRate = appData.settings?.taxRate ?? 12;
     const discount = parseFloat(document.getElementById('checkoutDiscount').value) || 0;
 
     const markupAmount = subtotal * (markupRate / 100);
@@ -1605,10 +1656,132 @@ function initSearch() {
 }
 
 // ============================================
+// UPDATE CHECKER
+// ============================================
+
+const UPDATE_CHECK_INTERVAL = 5 * 60 * 60 * 1000; // 5 hours in milliseconds
+const GITHUB_VERSION_URL = 'https://raw.githubusercontent.com/avasolutionsph-source/DEMO-BASIC-ERP/main/version.json';
+const LOCAL_VERSION_KEY = 'avaErpVersion';
+let updateCheckTimer = null;
+
+async function checkForUpdates() {
+    // Only check if online
+    if (!navigator.onLine) {
+        console.log('Offline - skipping update check');
+        return;
+    }
+
+    try {
+        // Fetch version from GitHub with cache-busting
+        const response = await fetch(GITHUB_VERSION_URL + '?t=' + Date.now(), {
+            cache: 'no-store'
+        });
+
+        if (!response.ok) {
+            console.log('Could not fetch version info');
+            return;
+        }
+
+        const remoteVersion = await response.json();
+        const localVersion = localStorage.getItem(LOCAL_VERSION_KEY);
+
+        // Compare versions (date-based: YYYY-MM-DD)
+        if (remoteVersion.version && remoteVersion.version !== localVersion) {
+            showUpdateBanner(remoteVersion);
+        }
+    } catch (error) {
+        console.log('Update check failed:', error.message);
+    }
+}
+
+function showUpdateBanner(versionInfo) {
+    // Remove existing banner if any
+    const existingBanner = document.getElementById('updateBanner');
+    if (existingBanner) {
+        existingBanner.remove();
+    }
+
+    const banner = document.createElement('div');
+    banner.id = 'updateBanner';
+    banner.className = 'update-banner';
+    banner.innerHTML = `
+        <div class="update-banner-content">
+            <div class="update-banner-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+            </div>
+            <div class="update-banner-text">
+                <strong>Update Available!</strong>
+                <span>Version ${versionInfo.version} is now available.</span>
+            </div>
+            <div class="update-banner-actions">
+                <button class="update-btn-refresh" onclick="applyUpdate('${versionInfo.version}')">Update Now</button>
+                <button class="update-btn-dismiss" onclick="dismissUpdateBanner()">Later</button>
+            </div>
+        </div>
+    `;
+
+    document.body.insertBefore(banner, document.body.firstChild);
+}
+
+function applyUpdate(version) {
+    // Save the new version to prevent showing banner again
+    localStorage.setItem(LOCAL_VERSION_KEY, version);
+
+    // Clear service worker cache and reload
+    if ('serviceWorker' in navigator && 'caches' in window) {
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cacheName => caches.delete(cacheName))
+            );
+        }).then(() => {
+            // Unregister service worker
+            navigator.serviceWorker.getRegistrations().then(registrations => {
+                registrations.forEach(registration => registration.unregister());
+            }).then(() => {
+                // Hard reload
+                window.location.reload(true);
+            });
+        });
+    } else {
+        window.location.reload(true);
+    }
+}
+
+function dismissUpdateBanner() {
+    const banner = document.getElementById('updateBanner');
+    if (banner) {
+        banner.classList.add('update-banner-hiding');
+        setTimeout(() => banner.remove(), 300);
+    }
+}
+
+function startUpdateChecker() {
+    // Check immediately on load
+    checkForUpdates();
+
+    // Set up periodic check every 5 hours
+    if (updateCheckTimer) {
+        clearInterval(updateCheckTimer);
+    }
+    updateCheckTimer = setInterval(checkForUpdates, UPDATE_CHECK_INTERVAL);
+}
+
+// Listen for online status changes
+window.addEventListener('online', () => {
+    console.log('Back online - checking for updates');
+    checkForUpdates();
+});
+
+// ============================================
 // INITIALIZATION
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function() {
     loadData();
     initAuth();
+    startUpdateChecker();
 });

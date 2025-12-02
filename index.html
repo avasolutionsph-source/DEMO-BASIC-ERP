@@ -29,7 +29,9 @@
     <div id="landingPage" class="landing-container" style="display: none;">
         <div class="landing-content">
             <div class="landing-header">
-                <img src="images/Ava transparent.png" alt="AVA Solutions" class="landing-logo">
+                <div class="landing-logo">
+                    <img src="images/Ava transparent.png" alt="AVA Solutions">
+                </div>
                 <h1 class="landing-title">AVA Solutions ERP</h1>
                 <p class="landing-subtitle">Complete Business Management System</p>
             </div>
@@ -90,7 +92,7 @@
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Install App
                 </button>
-                <p class="landing-note">Free to use. Your data stays on your device.</p>
+                <p class="landing-note">Your data stays on your device.</p>
             </div>
 
             <div class="landing-install-section">
@@ -116,7 +118,9 @@
 
     <!-- Signup Screen -->
     <div id="signupScreen" class="login-container" style="display: none;">
-        <img src="images/Ava transparent.png" alt="AVA Solutions" class="login-logo">
+        <div class="login-logo">
+            <img src="images/Ava transparent.png" alt="AVA Solutions">
+        </div>
         <div class="login-box">
             <h2 class="login-title">Create Your Account</h2>
             <form id="signupForm" class="login-form">
@@ -144,7 +148,9 @@
 
     <!-- Login Screen -->
     <div id="loginScreen" class="login-container" style="display: none;">
-        <img src="images/Ava transparent.png" alt="AVA Solutions" class="login-logo">
+        <div class="login-logo">
+            <img src="images/Ava transparent.png" alt="AVA Solutions">
+        </div>
         <div class="login-box">
             <h2 class="login-title">Welcome Back</h2>
             <form id="loginForm" class="login-form">
@@ -167,7 +173,9 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <img src="images/Ava transparent.png" alt="AVA" class="sidebar-logo">
+                <div class="sidebar-logo">
+                    <img src="images/Ava transparent.png" alt="AVA Solutions">
+                </div>
                 <button class="sidebar-collapse-btn" id="sidebarCollapseBtn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                         <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -694,6 +702,7 @@
                             </div>
                             <div class="pos-cart-totals">
                                 <div class="pos-total-row"><span>Subtotal</span><span id="posSubtotal">₱0.00</span></div>
+                                <div class="pos-total-row"><span>Markup (<span id="posMarkupRate">30</span>%)</span><span id="posMarkup">₱0.00</span></div>
                                 <div class="pos-total-row"><span>Tax (<span id="posTaxRate">12</span>%)</span><span id="posTax">₱0.00</span></div>
                                 <div class="pos-total-row pos-total-grand"><span>Total</span><span id="posTotal">₱0.00</span></div>
                             </div>
@@ -789,30 +798,34 @@
     </div>
 
     <div id="checkoutModal" class="modal">
-        <div class="modal-content modal-large">
+        <div class="modal-content">
             <div class="modal-header">
                 <h3>Confirm Sale</h3>
                 <button class="modal-close" data-modal="checkoutModal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="checkout-items-list" id="checkoutItemsList"></div>
-                <div class="checkout-summary">
-                    <div class="checkout-row"><span>Subtotal (Cost)</span><span id="checkoutSubtotal">₱0.00</span></div>
-                    <div class="checkout-row">
-                        <label><span>Markup (%)</span><input type="number" id="checkoutMarkup" class="checkout-input" min="0" max="500" step="0.1"></label>
-                        <span id="checkoutMarkupAmount">₱0.00</span>
-                    </div>
-                    <div class="checkout-row"><span>Selling Price</span><span id="checkoutSellingPrice">₱0.00</span></div>
-                    <div class="checkout-row">
-                        <label><span>Tax (%)</span><input type="number" id="checkoutTaxRate" class="checkout-input" min="0" max="100" step="0.1"></label>
-                        <span id="checkoutTaxAmount">₱0.00</span>
-                    </div>
-                    <div class="checkout-row">
-                        <label><span>Discount</span><input type="number" id="checkoutDiscount" class="checkout-input" min="0" step="0.01" value="0"></label>
-                        <span id="checkoutDiscountDisplay">-₱0.00</span>
-                    </div>
-                    <div class="checkout-row checkout-grand-total"><span>Grand Total</span><span id="checkoutGrandTotal">₱0.00</span></div>
+                <div class="checkout-field">
+                    <label class="checkout-field-label">Items</label>
+                    <div class="checkout-items-list" id="checkoutItemsList"></div>
                 </div>
+
+                <div class="checkout-field">
+                    <label class="checkout-field-label">Discount</label>
+                    <input type="number" id="checkoutDiscount" class="checkout-input-field" min="0" step="0.01" value="0" placeholder="Enter discount amount">
+                </div>
+
+                <div class="checkout-field">
+                    <label class="checkout-field-label">Order Summary</label>
+                    <div class="checkout-total-section">
+                        <div class="checkout-total-row"><span>Subtotal (Cost)</span><span id="checkoutSubtotal">₱0.00</span></div>
+                        <div class="checkout-total-row"><span>Markup (<span id="checkoutMarkup">30</span>%)</span><span id="checkoutMarkupAmount">+₱0.00</span></div>
+                        <div class="checkout-total-row"><span>Selling Price</span><span id="checkoutSellingPrice">₱0.00</span></div>
+                        <div class="checkout-total-row"><span>Tax (<span id="checkoutTaxRate">12</span>%)</span><span id="checkoutTaxAmount">+₱0.00</span></div>
+                        <div class="checkout-total-row"><span>Discount</span><span id="checkoutDiscountDisplay">-₱0.00</span></div>
+                        <div class="checkout-total-row grand"><span>Grand Total</span><span id="checkoutGrandTotal">₱0.00</span></div>
+                    </div>
+                </div>
+
                 <div class="checkout-customer">
                     <label for="checkoutCustomer">Customer</label>
                     <select id="checkoutCustomer"><option value="">Walk-in Customer</option></select>
@@ -825,6 +838,16 @@
                         <option value="GCash">GCash</option>
                         <option value="Bank Transfer">Bank Transfer</option>
                     </select>
+                </div>
+                <div class="checkout-cash-section" id="checkoutCashSection">
+                    <div class="checkout-field">
+                        <label class="checkout-field-label">Cash Received</label>
+                        <input type="number" id="checkoutCashAmount" class="checkout-input-field" min="0" step="0.01" placeholder="Enter cash amount">
+                    </div>
+                    <div class="checkout-change-display" id="checkoutChangeDisplay">
+                        <span>Change</span>
+                        <span id="checkoutChangeAmount">₱0.00</span>
+                    </div>
                 </div>
                 <div class="checkout-notes">
                     <label for="checkoutNotes">Notes (Optional)</label>
