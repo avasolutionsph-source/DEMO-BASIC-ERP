@@ -1,0 +1,26 @@
+{
+  "name": "AVA Solutions ERP",
+  "short_name": "AVA ERP",
+  "description": "Enterprise Resource Planning System by AVA Solutions",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1B5E37",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "images/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "images/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "lang": "en"
+}

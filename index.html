@@ -3,47 +3,162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo ERP System</title>
+    <title>AVA Solutions</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Enterprise Resource Planning System by AVA Solutions">
+    <meta name="theme-color" content="#1B5E37">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AVA ERP">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="images/icon.svg">
+    <link rel="apple-touch-icon" href="images/icon.svg">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Login Screen -->
-    <div id="loginScreen" class="login-container">
-        <div class="login-box">
-            <div class="login-header">
-                <div class="logo">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="40" height="40" rx="8" fill="#0EA5E9"/>
-                        <path d="M12 14H28M12 20H28M12 26H22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+    <!-- Landing / Download Page -->
+    <div id="landingPage" class="landing-container" style="display: none;">
+        <div class="landing-content">
+            <div class="landing-header">
+                <img src="images/Ava transparent.png" alt="AVA Solutions" class="landing-logo">
+                <h1 class="landing-title">AVA Solutions ERP</h1>
+                <p class="landing-subtitle">Complete Business Management System</p>
+            </div>
+
+            <div class="landing-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 8h20"/></svg>
+                    </div>
+                    <h3>Point of Sale</h3>
+                    <p>Fast and intuitive sales processing with real-time inventory updates</p>
                 </div>
-                <h1>Demo ERP System</h1>
-                <p class="login-subtitle">Enterprise Resource Planning Demo</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3>Inventory Management</h3>
+                    <p>Track stock levels, get low-stock alerts, and manage products easily</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17V7M8 17V3M13 17V10M18 17V13M23 17V7"/></svg>
+                    </div>
+                    <h3>Reports & Analytics</h3>
+                    <p>Visual dashboards and insights to make data-driven decisions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+                    </div>
+                    <h3>Customer Management</h3>
+                    <p>Build relationships with customer profiles and order history</p>
+                </div>
             </div>
-            <div class="demo-notice">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18Z" stroke="#0EA5E9" stroke-width="2"/>
-                    <path d="M10 6V10M10 14H10.01" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <span>This is a demo system. Use any email and password to continue.</span>
+
+            <div class="landing-highlights">
+                <div class="highlight-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Works Offline</span>
+                </div>
+                <div class="highlight-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>No Server Required</span>
+                </div>
+                <div class="highlight-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Install as App</span>
+                </div>
+                <div class="highlight-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <span>Data Stays Local</span>
+                </div>
             </div>
+
+            <div class="landing-cta">
+                <button class="btn btn-primary btn-lg" id="getStartedBtn">Get Started</button>
+                <button class="btn btn-secondary btn-lg" id="installBtn" style="display: none; margin-left: 12px;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Install App
+                </button>
+                <p class="landing-note">Free to use. Your data stays on your device.</p>
+            </div>
+
+            <div class="landing-install-section">
+                <h3>Install as App</h3>
+                <p>For the best experience, install AVA ERP on your device:</p>
+                <div class="install-steps">
+                    <div class="install-step">
+                        <span class="step-number">1</span>
+                        <span>Open in Chrome or Edge</span>
+                    </div>
+                    <div class="install-step">
+                        <span class="step-number">2</span>
+                        <span>Click the install icon in the address bar</span>
+                    </div>
+                    <div class="install-step">
+                        <span class="step-number">3</span>
+                        <span>Or use menu &rarr; "Install App"</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Screen -->
+    <div id="signupScreen" class="login-container" style="display: none;">
+        <img src="images/Ava transparent.png" alt="AVA Solutions" class="login-logo">
+        <div class="login-box">
+            <h2 class="login-title">Create Your Account</h2>
+            <form id="signupForm" class="login-form">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" placeholder="Maria Santos" required minlength="2">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" placeholder="maria@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create a password" required minlength="4">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm your password" required minlength="4">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            </form>
+            <div class="login-footer">Offline Mode – Data stored locally.</div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container" style="display: none;">
+        <img src="images/Ava transparent.png" alt="AVA Solutions" class="login-logo">
+        <div class="login-box">
+            <h2 class="login-title">Welcome Back</h2>
             <form id="loginForm" class="login-form">
                 <div class="form-group">
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="demo@example.com" required>
+                    <input type="email" id="email" placeholder="maria@company.com" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Enter any password" required>
+                    <input type="password" id="password" placeholder="Enter password" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Login to Dashboard</button>
             </form>
-            <div class="login-footer">
-                Demo ERP System – Frontend Demo Only. No real data is stored.
-            </div>
+            <div class="login-footer">Offline Mode – Data stored locally.</div>
         </div>
     </div>
 
@@ -52,178 +167,298 @@
         <!-- Sidebar -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <div class="logo-small">
-                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-                        <rect width="40" height="40" rx="8" fill="#0EA5E9"/>
-                        <path d="M12 14H28M12 20H28M12 26H22" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <span class="logo-text">Demo ERP</span>
-                <button class="sidebar-toggle" id="sidebarToggle">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <img src="images/Ava transparent.png" alt="AVA" class="sidebar-logo">
+                <button class="sidebar-collapse-btn" id="sidebarCollapseBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </button>
             </div>
+
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" data-page="dashboard">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <rect x="2" y="2" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        <rect x="11" y="2" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        <rect x="2" y="11" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                        <rect x="11" y="11" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                    <span>Dashboard</span>
-                </a>
-                <a href="#" class="nav-item" data-page="inventory">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M3 3H17V17H3V3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <path d="M3 8H17M8 3V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span>Inventory</span>
-                </a>
-                <a href="#" class="nav-item" data-page="sales">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M3 17V7L10 3L17 7V17H3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7 17V11H13V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span>Sales / Orders</span>
-                </a>
-                <a href="#" class="nav-item" data-page="customers">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M4 17C4 14 6.5 12 10 12C13.5 12 16 14 16 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span>Customers</span>
-                </a>
-                <a href="#" class="nav-item" data-page="reports">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M3 17V7M8 17V3M13 17V10M18 17V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span>Reports</span>
-                </a>
-                <a href="#" class="nav-item" data-page="settings">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M10 2V4M10 16V18M18 10H16M4 10H2M15.5 4.5L14 6M6 14L4.5 15.5M15.5 15.5L14 14M6 6L4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span>Settings</span>
-                </a>
-                <a href="#" class="nav-item logout-item" id="logoutBtn">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <path d="M13 3H16C16.5523 3 17 3.44772 17 4V16C17 16.5523 16.5523 17 16 17H13M8 14L3 10M3 10L8 6M3 10H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Logout</span>
-                </a>
+                <div class="nav-section">
+                    <button class="nav-section-toggle" data-section="main">
+                        <span>MAIN</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/></svg>
+                    </button>
+                    <div class="nav-section-items" id="section-main">
+                        <a href="#" class="nav-item active" data-page="dashboard">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="2" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="2" y="11" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="11" y="11" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+                            <span>Dashboard</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <button class="nav-section-toggle" data-section="operations">
+                        <span>OPERATIONS</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/></svg>
+                    </button>
+                    <div class="nav-section-items" id="section-operations">
+                        <a href="#" class="nav-item" data-page="pos">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 7H18" stroke="currentColor" stroke-width="1.5"/></svg>
+                            <span>New Sale</span>
+                        </a>
+                        <a href="#" class="nav-item" data-page="inventory">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 3H17V17H3V3Z" stroke="currentColor" stroke-width="1.5"/><path d="M3 8H17M8 3V17" stroke="currentColor" stroke-width="1.5"/></svg>
+                            <span>Inventory</span>
+                        </a>
+                        <a href="#" class="nav-item" data-page="sales">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 17V7L10 3L17 7V17H3Z" stroke="currentColor" stroke-width="1.5"/></svg>
+                            <span>Sales / Orders</span>
+                        </a>
+                        <a href="#" class="nav-item" data-page="customers">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 17C4 14 6.5 12 10 12C13.5 12 16 14 16 17" stroke="currentColor" stroke-width="1.5"/></svg>
+                            <span>Customers</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <button class="nav-section-toggle" data-section="analytics">
+                        <span>ANALYTICS</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/></svg>
+                    </button>
+                    <div class="nav-section-items" id="section-analytics">
+                        <a href="#" class="nav-item" data-page="reports">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 17V7M8 17V3M13 17V10M18 17V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            <span>Reports</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="nav-section">
+                    <button class="nav-section-toggle" data-section="system">
+                        <span>SYSTEM</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2"/></svg>
+                    </button>
+                    <div class="nav-section-items" id="section-system">
+                        <a href="#" class="nav-item" data-page="settings">
+                            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M10 2V4M10 16V18M18 10H16M4 10H2" stroke="currentColor" stroke-width="1.5"/></svg>
+                            <span>Settings</span>
+                        </a>
+                    </div>
+                </div>
             </nav>
+
+            <div class="sidebar-footer">
+                <div class="sidebar-user">
+                    <div class="sidebar-user-avatar" id="userAvatar">MS</div>
+                    <div class="sidebar-user-info">
+                        <div class="sidebar-user-name" id="userName">Maria Santos</div>
+                        <div class="sidebar-user-role" id="userRole">Owner</div>
+                    </div>
+                </div>
+                <button class="btn btn-logout" id="logoutBtn">
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M13 3H16C16.5523 3 17 3.44772 17 4V16C17 16.5523 16.5523 17 16 17H13M8 14L3 10M3 10L8 6M3 10H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span>Logout</span>
+                </button>
+            </div>
         </aside>
 
         <!-- Main Content -->
         <div class="main-content">
             <!-- Top Bar -->
             <header class="topbar">
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
-                <h2 class="page-title" id="pageTitle">Dashboard</h2>
-                <div class="topbar-right">
-                    <div class="user-menu">
-                        <div class="user-avatar">AD</div>
-                        <span class="user-name">Admin User</span>
+                <div class="topbar-left">
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </button>
+                    <div class="page-info">
+                        <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                        <p class="page-subtitle" id="pageSubtitle">Real-time business overview</p>
                     </div>
                 </div>
+                <div class="topbar-right">
+                    <span class="topbar-date" id="currentDate"></span>
+                    <button class="btn btn-outline btn-sm" onclick="location.reload()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C15.3019 3 18.1885 4.77814 19.7545 7.42909M21 3V8H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Refresh
+                    </button>
+                </div>
             </header>
+
+            <!-- Low Stock Alert Bar -->
+            <div class="top-alert-bar" id="topAlertBar" style="display: none;">
+                <div class="alert-content">
+                    <span class="alert-icon">⚠️</span>
+                    <span class="alert-text"><span id="topAlertCount">1</span> product running low</span>
+                    <span class="alert-detail" id="topAlertDetail">Face Mask - Charcoal (8 left)</span>
+                </div>
+                <button class="btn btn-danger btn-sm" onclick="navigateTo('inventory')">View Inventory</button>
+            </div>
 
             <!-- Content Area -->
             <div class="content-area">
                 <!-- Dashboard Page -->
                 <div id="dashboardPage" class="page-content active">
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-icon blue">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 2L2 7V12C2 16.55 5.84 20.74 12 22C18.16 20.74 22 16.55 22 12V7L12 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                    <!-- Summary Stats Row -->
+                    <div class="summary-stats">
+                        <div class="stat-card primary">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 21V3h6a6 6 0 0 1 0 12H6"></path><line x1="4" y1="8" x2="16" y2="8"></line><line x1="4" y1="12" x2="16" y2="12"></line></svg>
                             </div>
                             <div class="stat-content">
-                                <p class="stat-label">Total Sales (Today)</p>
-                                <h3 class="stat-value">₱125,430</h3>
-                                <span class="stat-change positive">+12.5%</span>
+                                <span class="stat-value" id="metricTodayRevenue">₱0</span>
+                                <span class="stat-label">Today's Revenue</span>
                             </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon green">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
-                                    <path d="M9 11L11 13L15 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                        <div class="stat-card success">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
                             </div>
                             <div class="stat-content">
-                                <p class="stat-label">Total Orders</p>
-                                <h3 class="stat-value">342</h3>
-                                <span class="stat-change positive">+8.2%</span>
+                                <span class="stat-value" id="metricMonthRevenue">₱0</span>
+                                <span class="stat-label">This Month</span>
                             </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon purple">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <circle cx="9" cy="7" r="4" stroke="white" stroke-width="2"/>
-                                    <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                        <div class="stat-card info">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                             </div>
                             <div class="stat-content">
-                                <p class="stat-label">Total Customers</p>
-                                <h3 class="stat-value">1,248</h3>
-                                <span class="stat-change positive">+15.3%</span>
+                                <span class="stat-value" id="metricYearRevenue">₱0</span>
+                                <span class="stat-label">This Year</span>
                             </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon orange">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
+                        <div class="stat-card warning">
+                            <div class="stat-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                             </div>
                             <div class="stat-content">
-                                <p class="stat-label">Low Stock Items</p>
-                                <h3 class="stat-value">23</h3>
-                                <span class="stat-change negative">Needs attention</span>
+                                <span class="stat-value" id="metricInventoryValue">₱0</span>
+                                <span class="stat-label">Inventory Value</span>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Main Dashboard Grid -->
                     <div class="dashboard-grid">
-                        <div class="card chart-card">
-                            <div class="card-header">
-                                <h3>Sales Last 7 Days</h3>
+                        <!-- Left Column: Revenue Chart -->
+                        <div class="chart-card full-width">
+                            <div class="chart-header">
+                                <h3>Revenue Trend (7 Days)</h3>
                             </div>
-                            <div class="card-body">
-                                <canvas id="salesChart"></canvas>
+                            <div class="chart-body">
+                                <canvas id="revenueChart"></canvas>
                             </div>
                         </div>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Recent Orders</h3>
+                        <!-- Orders & Inventory Row -->
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <span class="metric-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><path d="M9 12h6M9 16h6"></path></svg>
+                                </span>
+                                <h4>Orders</h4>
                             </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Order ID</th>
-                                                <th>Customer</th>
-                                                <th>Amount</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="recentOrdersTable">
-                                        </tbody>
-                                    </table>
+                            <div class="metric-body">
+                                <div class="metric-item">
+                                    <span class="metric-label">Pending Orders</span>
+                                    <span class="metric-value large" id="metricPendingOrders">0</span>
                                 </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Completed Today</span>
+                                    <span class="metric-value large" id="metricCompletedToday">0</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Avg Transaction</span>
+                                    <span class="metric-value" id="metricAvgTransaction">₱0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <span class="metric-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                </span>
+                                <h4>Inventory Status</h4>
+                            </div>
+                            <div class="metric-body">
+                                <div class="metric-item">
+                                    <span class="metric-label">Low Stock</span>
+                                    <span class="metric-value warning" id="metricLowStockAlerts">0</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Critical Stock</span>
+                                    <span class="metric-value warning" id="metricCriticalStock">0</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-label">Out of Stock</span>
+                                    <span class="metric-value danger" id="metricOutOfStock">0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Daily Goal -->
+                        <div class="metric-card goal-card">
+                            <div class="metric-header">
+                                <span class="metric-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                                </span>
+                                <h4>Daily Sales Goal</h4>
+                            </div>
+                            <div class="metric-body">
+                                <div class="goal-progress">
+                                    <div class="goal-circle">
+                                        <span class="goal-percent" id="dailyGoalPercent">0%</span>
+                                    </div>
+                                    <div class="goal-details">
+                                        <div class="progress-bar large"><div class="progress-fill" id="dailyGoalProgress" style="width: 0%"></div></div>
+                                        <span class="goal-text" id="dailyGoalText">₱0 / ₱15,000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sales History -->
+                        <div class="metric-card sales-history-card">
+                            <div class="metric-header">
+                                <span class="metric-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                </span>
+                                <h4>Sales History</h4>
+                            </div>
+                            <div class="sales-history-header">
+                                <div class="date-picker-wrapper">
+                                    <label>Select Date:</label>
+                                    <input type="date" id="salesHistoryDate" onchange="loadSalesHistory()">
+                                </div>
+                            </div>
+                            <div class="sales-history-stats">
+                                <div class="history-stat">
+                                    <span class="history-value" id="historyRevenue">₱0</span>
+                                    <span class="history-label">Revenue</span>
+                                </div>
+                                <div class="history-stat">
+                                    <span class="history-value" id="historyOrders">0</span>
+                                    <span class="history-label">Orders</span>
+                                </div>
+                                <div class="history-stat">
+                                    <span class="history-value" id="historyItems">0</span>
+                                    <span class="history-label">Items Sold</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Charts Row -->
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Sales by Category</h3>
+                            </div>
+                            <div class="chart-body pie-chart-body">
+                                <canvas id="categoryChart"></canvas>
+                            </div>
+                            <div class="chart-legend-bottom" id="categoryLegend"></div>
+                        </div>
+
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Top Products</h3>
+                            </div>
+                            <div class="chart-body">
+                                <canvas id="topProductsChart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -232,15 +467,11 @@
                 <!-- Inventory Page -->
                 <div id="inventoryPage" class="page-content">
                     <div class="page-header">
-                        <div class="page-header-left">
-                            <h2>Product Inventory</h2>
-                        </div>
+                        <div class="page-header-left"><h2>Product Inventory</h2></div>
                         <div class="page-header-right">
                             <input type="text" id="productSearch" class="search-input" placeholder="Search products...">
                             <button class="btn btn-primary" id="addProductBtn">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                                 Add Product
                             </button>
                         </div>
@@ -252,16 +483,13 @@
                                     <thead>
                                         <tr>
                                             <th>Product Name</th>
-                                            <th>SKU</th>
                                             <th>Category</th>
                                             <th>Stock</th>
                                             <th>Price</th>
-                                            <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="productsTable">
-                                    </tbody>
+                                    <tbody id="inventoryTable"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -271,9 +499,7 @@
                 <!-- Sales Page -->
                 <div id="salesPage" class="page-content">
                     <div class="page-header">
-                        <div class="page-header-left">
-                            <h2>Sales & Orders</h2>
-                        </div>
+                        <div class="page-header-left"><h2>Sales & Orders</h2></div>
                         <div class="page-header-right">
                             <input type="text" id="orderSearch" class="search-input" placeholder="Search orders...">
                         </div>
@@ -287,13 +513,12 @@
                                             <th>Order ID</th>
                                             <th>Customer</th>
                                             <th>Date</th>
-                                            <th>Total Amount</th>
+                                            <th>Total</th>
                                             <th>Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="ordersTable">
-                                    </tbody>
+                                    <tbody id="ordersTable"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -303,15 +528,11 @@
                 <!-- Customers Page -->
                 <div id="customersPage" class="page-content">
                     <div class="page-header">
-                        <div class="page-header-left">
-                            <h2>Customers</h2>
-                        </div>
+                        <div class="page-header-left"><h2>Customer Management</h2></div>
                         <div class="page-header-right">
                             <input type="text" id="customerSearch" class="search-input" placeholder="Search customers...">
                             <button class="btn btn-primary" id="addCustomerBtn">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                </svg>
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                                 Add Customer
                             </button>
                         </div>
@@ -326,12 +547,11 @@
                                             <th>Email</th>
                                             <th>Phone</th>
                                             <th>Total Orders</th>
-                                            <th>Last Order Date</th>
+                                            <th>Last Order</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="customersTable">
-                                    </tbody>
+                                    <tbody id="customersTable"></tbody>
                                 </table>
                             </div>
                         </div>
@@ -343,28 +563,16 @@
                     <h2>Reports & Analytics</h2>
                     <div class="reports-grid">
                         <div class="card">
-                            <div class="card-header">
-                                <h3>Sales by Month</h3>
-                            </div>
-                            <div class="card-body">
-                                <canvas id="monthlySalesChart"></canvas>
-                            </div>
+                            <div class="card-header"><h3>Revenue Overview</h3></div>
+                            <div class="card-body"><canvas id="reportsRevenueChart"></canvas></div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3>Top 5 Products</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="top-list" id="topProducts"></div>
-                            </div>
+                            <div class="card-header"><h3>Top Selling Products</h3></div>
+                            <div class="card-body"><div id="topProductsList" class="top-list"></div></div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3>Top 5 Customers</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="top-list" id="topCustomers"></div>
-                            </div>
+                            <div class="card-header"><h3>Top Customers</h3></div>
+                            <div class="card-body"><div id="topCustomersList" class="top-list"></div></div>
                         </div>
                     </div>
                 </div>
@@ -373,15 +581,13 @@
                 <div id="settingsPage" class="page-content">
                     <h2>Settings</h2>
                     <div class="card">
-                        <div class="card-header">
-                            <h3>Business Information</h3>
-                        </div>
+                        <div class="card-header"><h3>Business Information</h3></div>
                         <div class="card-body">
                             <form id="settingsForm" class="settings-form">
                                 <div class="form-row">
                                     <div class="form-group">
                                         <label for="businessName">Business Name</label>
-                                        <input type="text" id="businessName" value="Demo Company, Inc." required>
+                                        <input type="text" id="businessName" value="My Business" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="currency">Currency</label>
@@ -394,51 +600,126 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="timezone">Timezone</label>
-                                        <select id="timezone">
-                                            <option value="Asia/Manila" selected>Asia/Manila (GMT+8)</option>
-                                            <option value="UTC">UTC (GMT+0)</option>
-                                            <option value="America/New_York">America/New York (GMT-5)</option>
-                                        </select>
+                                        <label for="taxRate">Tax Rate (%)</label>
+                                        <input type="number" id="taxRate" value="12" min="0" max="100" step="0.1" required>
                                     </div>
                                     <div class="form-group">
+                                        <label for="markupRate">Markup / Profit Margin (%)</label>
+                                        <input type="number" id="markupRate" value="30" min="0" max="500" step="0.1" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="lowStockThreshold">Low Stock Threshold</label>
+                                        <input type="number" id="lowStockThreshold" value="10" min="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dailyGoal">Daily Sales Goal</label>
+                                        <input type="number" id="dailyGoal" value="15000" min="0" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
                                         <label for="contactEmail">Contact Email</label>
-                                        <input type="email" id="contactEmail" value="contact@democompany.com" required>
+                                        <input type="email" id="contactEmail" placeholder="contact@business.com">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save Settings</button>
                             </form>
                         </div>
                     </div>
+                    <div class="card" style="margin-top: 20px;">
+                        <div class="card-header"><h3>Data Management</h3></div>
+                        <div class="card-body">
+                            <div class="data-management-buttons">
+                                <button type="button" class="btn btn-secondary" onclick="exportData()">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 3V13M10 13L6 9M10 13L14 9M3 17H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    Export Data
+                                </button>
+                                <label class="btn btn-secondary" style="cursor:pointer;">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 17V7M10 7L6 11M10 7L14 11M3 3H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    Import Data
+                                    <input type="file" accept=".json" onchange="importData(event)" style="display:none;">
+                                </label>
+                                <button type="button" class="btn btn-danger" onclick="clearAllData()">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5H17M7 5V4C7 3.44772 7.44772 3 8 3H12C12.5523 3 13 3.44772 13 4V5M5 5V16C5 16.5523 5.44772 17 6 17H14C14.5523 17 15 16.5523 15 16V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                                    Clear All Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="margin-top: 20px;">
+                        <div class="card-header"><h3>Install App</h3></div>
+                        <div class="card-body">
+                            <p style="color: var(--text-secondary); margin-bottom: 16px;">Install AVA ERP as an app on your device for the best experience. Works offline and launches instantly.</p>
+                            <button type="button" class="btn btn-primary" id="settingsDownloadBtn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 8px;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                Download App
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POS Page -->
+                <div id="posPage" class="page-content">
+                    <div class="pos-container">
+                        <div class="pos-products-section">
+                            <div class="pos-search-bar">
+                                <input type="text" id="posProductSearch" class="pos-search-input" placeholder="Search products...">
+                                <select id="posCategoryFilter" class="pos-category-filter">
+                                    <option value="">All Categories</option>
+                                    <option value="Electronics">Electronics</option>
+                                    <option value="Furniture">Furniture</option>
+                                    <option value="Clothing">Clothing</option>
+                                    <option value="Food & Beverage">Food & Beverage</option>
+                                    <option value="Office Supplies">Office Supplies</option>
+                                </select>
+                            </div>
+                            <div class="pos-products-grid" id="posProductsGrid"></div>
+                        </div>
+                        <div class="pos-cart-section">
+                            <div class="pos-cart-header">
+                                <h3>Current Sale</h3>
+                                <button type="button" class="btn btn-secondary btn-sm" id="posClearCartBtn">Clear</button>
+                            </div>
+                            <div class="pos-customer-select">
+                                <select id="posCustomer"><option value="">Walk-in Customer</option></select>
+                            </div>
+                            <div class="pos-cart-items" id="posCartItems">
+                                <div class="pos-cart-empty">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none"><path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" stroke="currentColor" stroke-width="2"/><path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="currentColor" stroke-width="2"/><path d="M1 1H5L7.68 14.39C7.77 14.83 8.02 15.22 8.38 15.5C8.74 15.78 9.19 15.92 9.64 15.9H19.36C19.81 15.92 20.26 15.78 20.62 15.5C20.98 15.22 21.23 14.83 21.32 14.39L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    <p>Cart is empty</p>
+                                    <span>Click products to add them</span>
+                                </div>
+                            </div>
+                            <div class="pos-cart-totals">
+                                <div class="pos-total-row"><span>Subtotal</span><span id="posSubtotal">₱0.00</span></div>
+                                <div class="pos-total-row"><span>Tax (<span id="posTaxRate">12</span>%)</span><span id="posTax">₱0.00</span></div>
+                                <div class="pos-total-row pos-total-grand"><span>Total</span><span id="posTotal">₱0.00</span></div>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-block pos-checkout-btn" id="posCheckoutBtn" disabled>Complete Sale</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Footer -->
-            <footer class="app-footer">
-                Demo ERP System – Frontend Demo Only. No real data is stored.
-            </footer>
         </div>
     </div>
 
     <!-- Modals -->
-    <!-- Add Product Modal -->
     <div id="addProductModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Add New Product</h3>
+                <h3 id="productModalTitle">Add New Product</h3>
                 <button class="modal-close" data-modal="addProductModal">&times;</button>
             </div>
             <form id="addProductForm" class="modal-form">
+                <input type="hidden" id="editProductId">
                 <div class="form-group">
-                    <label for="productName">Product Name</label>
+                    <label for="productName">Product Name *</label>
                     <input type="text" id="productName" required>
                 </div>
                 <div class="form-group">
-                    <label for="productSKU">SKU</label>
-                    <input type="text" id="productSKU" required>
-                </div>
-                <div class="form-group">
-                    <label for="productCategory">Category</label>
+                    <label for="productCategory">Category *</label>
                     <select id="productCategory" required>
                         <option value="">Select Category</option>
                         <option value="Electronics">Electronics</option>
@@ -449,61 +730,129 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="productStock">Stock Quantity</label>
+                    <label for="productStock">Stock Quantity *</label>
                     <input type="number" id="productStock" min="0" required>
                 </div>
                 <div class="form-group">
-                    <label for="productPrice">Price (₱)</label>
+                    <label for="productPrice">Price *</label>
                     <input type="number" id="productPrice" step="0.01" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="productLowStockAlert">Low Stock Alert Threshold</label>
+                    <input type="number" id="productLowStockAlert" min="0" placeholder="Leave empty to use global setting">
+                    <small style="color: var(--text-secondary); font-size: 11px;">Alert when stock falls below this number</small>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-modal="addProductModal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Add Product</button>
+                    <button type="submit" class="btn btn-primary" id="productSubmitBtn">Add Product</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Add Customer Modal -->
     <div id="addCustomerModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Add New Customer</h3>
+                <h3 id="customerModalTitle">Add New Customer</h3>
                 <button class="modal-close" data-modal="addCustomerModal">&times;</button>
             </div>
             <form id="addCustomerForm" class="modal-form">
+                <input type="hidden" id="editCustomerId">
                 <div class="form-group">
-                    <label for="customerName">Full Name</label>
+                    <label for="customerName">Full Name *</label>
                     <input type="text" id="customerName" required>
                 </div>
                 <div class="form-group">
-                    <label for="customerEmail">Email</label>
+                    <label for="customerEmail">Email *</label>
                     <input type="email" id="customerEmail" required>
                 </div>
                 <div class="form-group">
-                    <label for="customerPhone">Phone</label>
+                    <label for="customerPhone">Phone *</label>
                     <input type="tel" id="customerPhone" required>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-modal="addCustomerModal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Add Customer</button>
+                    <button type="submit" class="btn btn-primary" id="customerSubmitBtn">Add Customer</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Order Details Modal -->
     <div id="orderDetailsModal" class="modal">
         <div class="modal-content modal-large">
             <div class="modal-header">
                 <h3>Order Details</h3>
                 <button class="modal-close" data-modal="orderDetailsModal">&times;</button>
             </div>
-            <div class="modal-body" id="orderDetailsContent">
+            <div class="modal-body" id="orderDetailsContent"></div>
+        </div>
+    </div>
+
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Confirm Sale</h3>
+                <button class="modal-close" data-modal="checkoutModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="checkout-items-list" id="checkoutItemsList"></div>
+                <div class="checkout-summary">
+                    <div class="checkout-row"><span>Subtotal (Cost)</span><span id="checkoutSubtotal">₱0.00</span></div>
+                    <div class="checkout-row">
+                        <label><span>Markup (%)</span><input type="number" id="checkoutMarkup" class="checkout-input" min="0" max="500" step="0.1"></label>
+                        <span id="checkoutMarkupAmount">₱0.00</span>
+                    </div>
+                    <div class="checkout-row"><span>Selling Price</span><span id="checkoutSellingPrice">₱0.00</span></div>
+                    <div class="checkout-row">
+                        <label><span>Tax (%)</span><input type="number" id="checkoutTaxRate" class="checkout-input" min="0" max="100" step="0.1"></label>
+                        <span id="checkoutTaxAmount">₱0.00</span>
+                    </div>
+                    <div class="checkout-row">
+                        <label><span>Discount</span><input type="number" id="checkoutDiscount" class="checkout-input" min="0" step="0.01" value="0"></label>
+                        <span id="checkoutDiscountDisplay">-₱0.00</span>
+                    </div>
+                    <div class="checkout-row checkout-grand-total"><span>Grand Total</span><span id="checkoutGrandTotal">₱0.00</span></div>
+                </div>
+                <div class="checkout-customer">
+                    <label for="checkoutCustomer">Customer</label>
+                    <select id="checkoutCustomer"><option value="">Walk-in Customer</option></select>
+                </div>
+                <div class="checkout-payment">
+                    <label for="checkoutPaymentMethod">Payment Method</label>
+                    <select id="checkoutPaymentMethod">
+                        <option value="Cash">Cash</option>
+                        <option value="Card">Card</option>
+                        <option value="GCash">GCash</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <div class="checkout-notes">
+                    <label for="checkoutNotes">Notes (Optional)</label>
+                    <textarea id="checkoutNotes" rows="2" placeholder="Add any notes..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-modal="checkoutModal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmCheckoutBtn">Confirm Sale</button>
             </div>
         </div>
     </div>
 
     <script src="app.js"></script>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered:', registration.scope);
+                    })
+                    .catch(error => {
+                        console.log('ServiceWorker registration failed:', error);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

@@ -1,128 +1,161 @@
-# Demo ERP System
+# AVA Solutions ERP
 
-A fully frontend-only, responsive demo ERP (Enterprise Resource Planning) web application designed to showcase ERP functionality to potential clients.
+A fully frontend-only, responsive ERP (Enterprise Resource Planning) Progressive Web App built with pure HTML, CSS, and JavaScript. All data is stored locally using localStorage - no backend required.
 
 ## Overview
 
-This is a demonstration system built with pure HTML, CSS, and JavaScript. All data is dummy/static and stored in JavaScript objects with localStorage persistence. No backend or database is required.
+AVA Solutions ERP is a complete point-of-sale and business management system designed for small to medium businesses. It features user authentication, inventory management, sales processing, customer tracking, and comprehensive reporting.
 
 ## Features
 
-### 1. Login Screen
-- Simple fake authentication (accepts any email/password)
-- Clean, modern design with demo notice
-- Redirects to dashboard on login
+### Authentication
+- Account registration with email/password
+- Secure login with session management
+- Multiple user accounts supported
+- Automatic session persistence
 
-### 2. Dashboard
-- Summary cards showing:
-  - Total Sales (Today)
-  - Total Orders
-  - Total Customers
-  - Low Stock Items
-- Sales chart (last 7 days)
-- Recent orders table
+### Dashboard
+- Real-time business metrics:
+  - Today's Revenue
+  - Monthly Revenue
+  - Yearly Revenue
+  - Inventory Value
+- Revenue trend chart (7 days)
+- Sales by category breakdown
+- Orders and inventory status cards
+- Daily sales goal tracking with progress
+- Sales history by date
 
-### 3. Inventory Module
-- Product listing with search functionality
-- Columns: Product Name, SKU, Category, Stock, Price, Status
-- Add new products via modal form
-- Delete products
-- Real-time stock status indicators (In Stock / Low Stock / Out of Stock)
+### Point of Sale (POS)
+- Product grid with quick add to cart
+- Real-time cart management
+- Customer selection
+- Configurable markup and tax rates
+- Discount support
+- Auto-generated order numbers
+- Receipt generation
 
-### 4. Sales / Orders Module
-- Order listing with search functionality
-- Columns: Order ID, Customer, Date, Total Amount, Status
-- View detailed order information in modal
-- Status badges (Paid / Pending / Cancelled)
-- Order items breakdown with tax calculation
+### Inventory Management
+- Product listing with search
+- Add/Edit/Delete products
+- Category management
+- Stock quantity tracking
+- Price management
+- Product-specific low stock alerts
+- Stock status indicators (In Stock / Low Stock / Out of Stock)
 
-### 5. Customers Module
-- Customer listing with search functionality
-- Columns: Name, Email, Phone, Total Orders, Last Order Date
-- Add new customers via modal form
-- Delete customers
+### Sales / Orders
+- Complete order history
+- Order details with item breakdown
+- Status tracking (Paid / Pending / Cancelled)
+- Tax and total calculations
+- Customer association
 
-### 6. Reports Module
+### Customers
+- Customer database management
+- Contact information storage
+- Order history per customer
+- Add/Edit/Delete customers
+
+### Reports & Analytics
+- Top products by revenue
+- Top customers by spending
 - Monthly sales chart
-- Top 5 products by revenue
-- Top 5 customers by order count
 - Visual data representation
 
-### 7. Settings Page
-- Business information configuration:
-  - Business Name
-  - Currency (PHP, USD, EUR)
-  - Timezone
-  - Contact Email
-- Demo-only save functionality
+### Settings
+- Business name configuration
+- Currency selection (PHP, USD, EUR)
+- Tax rate configuration
+- Markup rate settings
+- Low stock threshold (global)
+- Daily sales goal
+- Data export (JSON)
+- Data import functionality
 
-## Technical Details
+### Progressive Web App (PWA)
+- Installable on mobile and desktop
+- Offline capability
+- App icon and splash screen
+- Standalone display mode
 
-### Technologies Used
-- **HTML5** - Structure and layout
-- **CSS3** - Styling with custom properties, flexbox, and grid
-- **JavaScript (ES6+)** - Application logic and interactivity
-- **Canvas API** - Charts rendering
-- **localStorage** - Data persistence across sessions
-- **sessionStorage** - Login state management
+## Technical Stack
 
-### Key Features
-- **Single Page Application (SPA)** - No page reloads, smooth navigation
-- **Responsive Design** - Works on desktop, tablet, and mobile devices
-- **LocalStorage Persistence** - Added data persists across browser sessions
-- **Modern UI/UX** - Clean, professional SaaS-style interface
-- **Search/Filter** - Real-time filtering on all data tables
-- **Modal System** - For forms and detail views
-- **Notification System** - User feedback for actions
+- **HTML5** - Structure and semantic markup
+- **CSS3** - Custom properties, Flexbox, Grid, responsive design
+- **JavaScript (ES6+)** - Application logic
+- **Canvas API** - Custom chart rendering
+- **localStorage** - Data persistence
+- **sessionStorage** - Session management
+- **Service Worker** - Offline caching (PWA)
+- **Web App Manifest** - PWA configuration
 
 ## File Structure
 
 ```
 DEMO ERP/
-├── index.html          # Main HTML structure
-├── styles.css          # All styling and responsive design
-├── app.js             # Application logic and data management
-└── README.md          # This file
+├── index.html          # Main application
+├── styles.css          # All styling
+├── app.js              # Application logic
+├── manifest.json       # PWA manifest
+├── sw.js               # Service worker
+├── images/
+│   ├── icon.svg        # App icon
+│   └── Ava transparent.png  # Logo
+└── README.md           # Documentation
 ```
 
-## How to Use
+## Getting Started
 
-### Getting Started
-1. Open `index.html` in any modern web browser
-2. Enter any email and password on the login screen
-3. Click "Login to Dashboard" to access the application
+### Option 1: Direct Open
+1. Open `index.html` in a modern web browser
 
-### Navigation
-- Use the sidebar menu to navigate between modules
-- Click on the hamburger menu icon on mobile devices to toggle the sidebar
-- All navigation happens without page reloads
+### Option 2: Local Server (Recommended for PWA)
+1. Run a local server: `npx http-server -p 5500`
+2. Open `http://localhost:5500`
 
-### Adding Data
-- **Products**: Click "Add Product" button in Inventory module
-- **Customers**: Click "Add Customer" button in Customers module
-- All added data is stored in localStorage and persists across sessions
+### First Time Setup
+1. Create an account on the signup screen
+2. Login with your credentials
+3. Configure settings (business name, currency, tax rate)
+4. Add products to inventory
+5. Start making sales!
 
-### Viewing Details
-- **Orders**: Click the eye icon to view full order details
-- Details are displayed in a modal overlay
+## Usage Guide
 
-### Searching
-- Use the search bars at the top of each module to filter data
-- Search works in real-time as you type
+### Making a Sale
+1. Navigate to "New Sale" in the sidebar
+2. Click products to add them to cart
+3. Adjust quantities as needed
+4. Select or add a customer
+5. Click "Checkout" to review
+6. Adjust markup, tax, or add discounts
+7. Confirm the sale
 
-### Logging Out
-- Click "Logout" in the sidebar to return to the login screen
-- Session is cleared, but data persists in localStorage
+### Managing Inventory
+1. Go to "Inventory" module
+2. Click "Add Product" to add new items
+3. Set product-specific low stock alerts
+4. Edit or delete products as needed
+
+### Viewing Reports
+1. Navigate to "Reports" module
+2. View top products and customers
+3. Analyze monthly sales trends
+
+### Installing as PWA
+1. Open the app in Chrome/Edge
+2. Click the install icon in the address bar
+3. Or use browser menu > "Install App"
 
 ## Browser Compatibility
 
-Works best in modern browsers:
 - Chrome 90+
 - Firefox 88+
 - Safari 14+
 - Edge 90+
 
-## Responsive Breakpoints
+## Responsive Design
 
 - **Desktop**: 1024px and above
 - **Tablet**: 768px - 1023px
@@ -130,63 +163,34 @@ Works best in modern browsers:
 
 ## Customization
 
-### Colors
-Edit CSS custom properties in `styles.css`:
+### Theme Colors
+Edit CSS variables in `styles.css`:
 ```css
 :root {
-    --primary-color: #0EA5E9;      /* Main brand color */
-    --success-color: #10B981;       /* Success states */
-    --warning-color: #F59E0B;       /* Warning states */
-    --danger-color: #EF4444;        /* Danger/error states */
+    --primary-color: #1B5E37;    /* AVA Green */
+    --success-color: #10B981;
+    --warning-color: #F59E0B;
+    --danger-color: #EF4444;
 }
 ```
 
-### Data
-Edit dummy data in `app.js`:
-```javascript
-let dummyData = {
-    products: [...],
-    orders: [...],
-    customers: [...],
-    // etc.
-};
-```
+### Currency
+Change in Settings page or edit `defaultData` in `app.js`
 
-### Adding New Modules
-1. Add navigation item in sidebar (HTML)
-2. Create page content section (HTML)
-3. Add initialization function (JavaScript)
-4. Connect navigation handler
+## Data Storage
 
-## Demo Notice
+All data is stored in browser localStorage:
+- `avaErpData` - Products, customers, orders, settings
+- `avaAccounts` - User accounts
+- `avaOrderNumber` - Order number counter
 
-This is a frontend demonstration only. Features include:
-- No real authentication
+## Notes
+
+- This is a frontend-only application
 - No server-side processing
-- No database storage
-- Data stored in browser localStorage
-- All operations are simulated
-
-Footer text clearly states: "Demo ERP System – Frontend Demo Only. No real data is stored."
-
-## Use Cases
-
-Perfect for:
-- Client demonstrations
-- Sales presentations
-- UI/UX showcases
-- ERP concept validation
-- Training and education
-- Portfolio projects
-
-## License
-
-This is a demo project created for demonstration purposes.
-
-## Support
-
-For questions or customization requests, please refer to the code comments in each file.
+- Data persists in browser localStorage
+- Clear browser data to reset the application
 
 ---
 
-**Demo ERP System** - A modern, responsive ERP demonstration application
+**AVA Solutions ERP** - Enterprise Resource Planning System

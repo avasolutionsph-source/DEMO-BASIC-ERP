@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="64" fill="#2D2D2D"/>
+  <!-- A with pointed top and triangle cutout -->
+  <path d="M256 70 L420 420 L330 420 L295 330 L217 330 L182 420 L92 420 L256 70 Z M256 180 L232 260 L280 260 L256 180 Z" fill="white" fill-rule="evenodd"/>
+</svg>
